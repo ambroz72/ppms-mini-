@@ -1,0 +1,91 @@
+{% extends 'home.html' %} 12 ">
+{% block content %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Sign up</title>
+    <style>
+        body{
+            text-align: center;
+            background-image: url("https://t3.ftcdn.net/jpg/02/64/92/28/360_F_264922838_NErJEovZiP9MTa49apqL1Vs3f88ZT8Dg.jpg");
+            background-repeat: no-repeat;
+            background-size: cover;
+                     }
+        h1{color: blue;}
+        h2{color: rgb(3, 68, 129);}
+        h3{color: blue;}
+
+    </style>
+</head>
+<body>
+<br><br><br><br>
+<div class="container">
+    <div class="bg-light p-5">
+        <h3 class="text-uppercase mb-3">SignUp</h3>
+        <form method="post" action="{% url 'Signup' %}" >
+            {% csrf_token %}
+            <div class="row g-4">
+
+                <div class="col-12 col-sm-6">
+                    <input type="text" class="form-control " name="fname" placeholder="Enter First Name" required class="form-control bg-white border-0"  style="height: 55px;">
+                    <div class="valid-feedback">Valid.</div>
+                    <div class="invalid-feedback">Please fill out this field.</div>
+                </div>
+
+                <div class="col-12 col-sm-6">
+                    <input type="text" class="form-control" name="lname"  placeholder="Enter Last Name" required class="form-control bg-white border-0" style="height: 55px;">
+                    <div class="valid-feedback">Valid.</div>
+                    <div class="invalid-feedback">Please fill out this field.</div>
+                </div>
+                
+                <div class="col-12 col-sm-6">
+                  <input type="text" class="form-control" name="uname"  placeholder="Enter User Name" required class="form-control bg-white border-0" style="height: 55px;">
+                  <div class="valid-feedback">Valid.</div>
+                  <div class="invalid-feedback">Please fill out this field.</div>
+              </div>
+              <div class="col-12 col-sm-6">
+                <input  type="text" class="form-control" name="adds"  placeholder="Address" required class="form-control bg-white border-0" style="height: 55px;">
+                <div class="valid-feedback">Valid.</div>
+                <div class="invalid-feedback">Please fill out this field.</div>
+            </div>
+            <div class="col-12 col-sm-6">
+              <input  type="text" class="form-control" name="post"  placeholder="Enter Post" required class="form-control bg-white border-0" style="height: 55px;">
+              <div class="valid-feedback">Valid.</div>
+              <div class="invalid-feedback">Please fill out this field.</div>
+          </div>
+          <div class="col-12 col-sm-6">
+            <input type="number" class="form-control" name="Age"  placeholder="Enter AGE" required class="form-control bg-white border-0" style="height: 55px;">
+            <div class="valid-feedback">Valid.</div>
+            <div class="invalid-feedback">Please fill out this field.</div>
+        </div>
+        <div class="col-12 col-sm-6">
+          <input type="email" class="form-control" name="E-mail"  placeholder="Enter email"  required class="form-control bg-white border-0" style="height: 55px;">
+          <div class="valid-feedback">Valid.</div>
+          <div class="invalid-feedback">Please fill out this field.</div>
+      </div>
+      <div class="col-12 col-sm-6">
+        <input  type="number" class="form-control" name="tphone"  placeholder="Phone number"  required class="form-control bg-white border-0" style="height: 55px;">
+        <div class="valid-feedback">Valid.</div>
+        <div class="invalid-feedback">Please fill out this field.</div>
+    </div>
+    <div class="col-12 col-sm-6">
+      <input  type="password" class="form-control" name="pswd"  placeholder="Enter password"  required class="form-control bg-white border-0" style="height: 55px;">
+      <div class="valid-feedback">Valid.</div>
+      <div class="invalid-feedback">Please fill out this field.</div>
+  </div>
+  <div  class="col-12 col-sm-6">
+    <input  type="password" class="form-control" name="cpswd" placeholder="Enter password"  required class="form-control bg-white border-0" style="height: 55px;">
+    <div class="valid-feedback">Valid.</div>
+    <div class="invalid-feedback">Please fill out this field.</div>
+</div>
+  <div class="col-12">
+    <button class="btn btn-primary w-100 py-3" type="submit">Submit</button>
+                </div>
+            </div>
+        </form>
+    </div>
+    <!-- Comment Form End -->
+  </div></div><br><br><br><br>
+</body>
+</html>
+{% endblock %}

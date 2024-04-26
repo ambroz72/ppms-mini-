@@ -1,0 +1,46 @@
+{% extends 'admin.html' %}
+{% block content %}
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  
+    <title>Add Category</title>
+</head>
+<body>
+
+    {% comment %} <div class ="container">
+    <form method="post" action="{% url 'e_category' catg.id %}">
+    {% csrf_token %}
+    <input type="text" name="npcatgr" value="{{catg.product_category}}"  placeholder="Category"><br>
+    <input type="text" name="npri" value="{{catg.product_price}}" placeholder="Price"><br>
+    <input type="text" name="nst" value="{{catg.product_stock}}"  placeholder="Stock"><br> 
+    <button type="submit" class="btn btn-primary mt-3">Submit</button> {% endcomment %}
+
+</div><br><br><br><br>
+<div class="container">
+    <div class="bg-light p-5">
+        <h3 class="text-uppercase mb-4">Edit Fuel Type</h3>
+        <form method="post" action="{% url 'e_category' catg.id %}">
+            {% csrf_token %}
+            <div class="row g-3">
+                <div class="col-12 col-sm-6">
+                    <input type="text" name="npcatgr" value="{{catg.product_category}}"  placeholder="Category"class="form-control bg-white border-0"  style="height: 55px;">
+                </div>
+                <div class="col-12 col-sm-6">
+                    <input type="text" name="npri" value="{{catg.product_price}}" placeholder="Price" class="form-control bg-white border-0" style="height: 55px;">
+                </div>
+                <div class="col-12 col-sm-6">
+                    <input type="text" name="nst" value="{{catg.product_stock}}"  placeholder="Stock" class="form-control bg-white border-0"  style="height: 55px;">
+                </div>
+                <div class="col-12">
+                    <button class="btn btn-primary w-100 py-3" type="submit">Submit</button>
+                </div>
+            </div>
+        </form>
+    </div><br><br><br><br>
+    <!-- Comment Form End -->
+    </div></div>
+</body>
+</html>
+{% endblock %}

@@ -1,0 +1,39 @@
+{% extends 'home.html' %}
+{% block content %}
+{% load static %}
+<body>
+
+</div><br><br><br><br>
+<div class="container">
+    <div class="bg-light p-4">
+        <h3 class="text-uppercase mb-3">Attendance</h3>
+        <form method="post" action="{% url 'tregister'  %}" enctype="multipart/form-data">
+            {% csrf_token %}
+            <div class="row g-3">
+                <div class="col-12 ">
+                    <input type="text" class="form-control" name="atten"  placeholder="Name" required  class="form-control bg-white border-0"  style="height: 55px;">
+                    <div class="valid-feedback">Valid.</div>
+                    <div class="invalid-feedback">Please fill out this field.</div>
+                </div>
+                <div class="col-12 ">
+                    <input type="text" class="form-control" name="date" placeholder="Date  YYYY-MM-DD" required  class="form-control bg-white border-0"  style="height: 55px;">
+                    <div class="valid-feedback">Valid.</div>
+                    <div class="invalid-feedback">Please fill out this field.</div>
+                </div>
+
+                <div class="col-12 ">
+                    <input type="text" name="shift" placeholder="Shift (time)" class="form-control" required  class="form-control bg-white border-0" style="height: 55px;">
+                    <div class="valid-feedback">Valid.</div>
+                    <div class="invalid-feedback">Please fill out this field.</div>
+                </div>
+
+                <div class="col-12">
+                    <button class="btn btn-primary w-100 py-3" type="submit">Submit</button>
+                </div>
+            </div>
+        </form>
+    </div><br><br><br><br>
+    <!-- Comment Form End -->
+    </div></div>
+</body>
+{% endblock %}

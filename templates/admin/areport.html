@@ -1,0 +1,69 @@
+{% extends 'home.html' %}
+{% block content %}
+{% load static %}
+<body>
+    {% comment %} <h2>Add reports</h2>
+<div class="container">
+<form method="post" action="{% url 'a_report' %}" enctype="multipart/form-data">
+    {% csrf_token %}
+    <input type="text" name="prname"  placeholder="Name"><br>
+    <input type="text" name="prdesc" placeholder="Description"><br>
+    <input type="text" name="prdate"  placeholder="Date"><br>
+    <input type="number" name="prstock"  placeholder="Amount of fuel in liter"><br>
+    <select name="adcatg" class="form-control mt-3">
+        {% for i in catg %}
+        <option value=""hidden>Category</option>
+        <option value="{{i.id}}">{{i.product_category}}</option>
+        {% endfor %}
+    </select><br>
+    <button type="submit" class="btn btn-primary mt-3" >Submit</button>
+</form>
+</div><br><br><br><br> {% endcomment %}
+
+
+</div><br><br><br><br>
+<div class="container">
+    <div class="bg-light p-4">
+        <h3 class="text-uppercase mb-3">Add Report</h3>
+        <form method="post" action="{% url 'a_report' %}" enctype="multipart/form-data">
+            {% csrf_token %}
+            <div class="row g-3">
+                <div class="col-12 ">
+                    <input type="text" name="prname"  placeholder="Name" required  class="form-control bg-white border-0"  style="height: 55px;">
+                    <div class="valid-feedback">Valid.</div>
+                    <div class="invalid-feedback">Please fill out this field.</div>
+                </div>
+                <div class="col-12">
+                <select name="adcatg" class="form-control mt-3">
+                    {% for i in catg %}
+                    <option value=""hidden>Category</option>
+                    <option value="{{i.id}}">{{i.product_category}}</option>
+                    {% endfor %}
+                </select></div><br><br>
+                <div class="col-12 ">
+                    <input type="text" name="prdesc" placeholder="Description" required  class="form-control bg-white border-0"  style="height: 55px;">
+                    <div class="valid-feedback">Valid.</div>
+                    <div class="invalid-feedback">Please fill out this field.</div>
+                </div>
+                <div class="col-12 ">
+                    <input type="text" name="prdate"  placeholder="Date" required  class="form-control bg-white border-0"  style="height: 55px;">
+                    <div class="valid-feedback">Valid.</div>
+                    <div class="invalid-feedback">Please fill out this field.</div>
+                </div>
+                <div class="col-12 ">
+                    <input  type="number" name="prstock"  placeholder="Amount of fuel in liter" required  class="form-control bg-white border-0" style="height: 55px;">
+                    <div class="valid-feedback">Valid.</div>
+                    <div class="invalid-feedback">Please fill out this field.</div>
+                </div>
+                <br><br>
+
+                <div class="col-12">
+                    <button class="btn btn-primary w-100 py-3" type="submit">Submit</button>
+                </div>
+            </div>
+        </form>
+    </div><br><br><br><br>
+    <!-- Comment Form End -->
+    </div></div>
+</body>
+{% endblock %}

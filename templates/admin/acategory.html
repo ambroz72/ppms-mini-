@@ -1,0 +1,44 @@
+{% extends 'admin.html' %}
+{% block content %}
+{% load static %}
+
+    <title>Add Category</title>
+</head>
+<body>
+    {% comment %} <div class="container"><br><br>
+    <form method="post" action="{% url 'a_category' %}">
+    {% csrf_token %}
+    <input type="text" name="pcatgr" placeholder="Category">
+    <input type="text" name="pric"  placeholder="Price">
+    <input type="text" name="stoc" placeholder="Stock">
+    <button type="submit" class="btn btn-success mt-3">Submit</button>
+    </form>
+</div> {% endcomment %}
+<br><br><br><br>
+<div class="container">
+    <div class="bg-light p-5">
+        <h3 class="text-uppercase mb-4">Add Fuel Type</h3>
+        <form method="post" action="{% url 'a_category' %}">
+            {% csrf_token %}
+            <div class="row g-3">
+                <div class="col-12 col-sm-6">
+                    <input type="text" name="pcatgr" placeholder=" Category"class="form-control bg-white border-0"  style="height: 55px;">
+                </div>
+                <div class="col-12 col-sm-6">
+                    <input type="text" type="text" name="pric"  placeholder="Price" class="form-control bg-white border-0" style="height: 55px;">
+                </div>
+                <div class="col-12 col-sm-6">
+                    <input type="text" name="stoc" placeholder="Stock" class="form-control bg-white border-0"  style="height: 55px;">
+                </div>
+                <div class="col-12">
+                    <button class="btn btn-primary w-100 py-3" type="submit">Submit</button>
+                </div>
+            </div>
+        </form>
+    </div><br><br><br><br>
+    <!-- Comment Form End -->
+    </div></div>
+    
+</body>
+</html>
+{% endblock %}

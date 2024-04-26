@@ -1,0 +1,59 @@
+{% extends 'admin.html' %}
+{% block content %}
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+ 
+</head>
+<body>
+
+</div><br><br><br><br>
+
+<div class="container">
+    <div class="bg-light p-4">
+        <h3 class="text-uppercase mb-3">Edit Report</h3>
+        <form method="post" action="/e_report/{{prod.id}}" enctype="multipart/form-data">
+            {% csrf_token %}
+            <div class="row g-3">
+                <div class="col-12 ">
+                    <input input type="text" name="nprname" value="{{prod.r_name}}"placeholder="Name" class="form-control"  required  class="form-control bg-white border-0"  style="height: 55px;">
+                    <div class="valid-feedback">Valid.</div>
+                    <div class="invalid-feedback">Please fill out this field.</div>
+                </div>
+                <div class="col-12 ">
+                <select name="nadcatg" class="form-control mt-3">
+                    <option value=""hidden>Category</option>
+                        {% for e in ecatg %}
+                        <option value="{{e.id}}">{{e.product_category}}</option>
+                        {% endfor %}
+                    </select></div>
+                <div class="col-12 ">
+                    <input type="text" name="nprdesc" value="{{prod.r_details}}" placeholder="Description" class="form-control"  required  class="form-control bg-white border-0"  style="height: 55px;">
+                    <div class="valid-feedback">Valid.</div>
+                    <div class="invalid-feedback">Please fill out this field.</div>
+                </div>
+
+                <div class="col-12 ">
+                    <input type="text" name="nprdate" value="{{prod.r_DOB}}" placeholder="Date" class="form-control" required  class="form-control bg-white border-0" style="height: 55px;">
+                    <div class="valid-feedback">Valid.</div>
+                    <div class="invalid-feedback">Please fill out this field.</div>
+                </div>
+                <div class="col-12 ">
+                    <input type="number" name="nprquanity" value="{{prod.r_quantity}}" placeholder="Quantity" class="form-control" required  class="form-control bg-white border-0" style="height: 55px;">
+                    <div class="valid-feedback">Valid.</div>
+                    <div class="invalid-feedback">Please fill out this field.</div>
+                </div>
+                
+
+                <div class="col-12">
+                    <button class="btn btn-primary w-100 py-3" type="submit">Submit</button>
+                </div>
+            </div>
+        </form>
+    </div><br><br><br><br>
+    <!-- Comment Form End -->
+    </div></div>
+</body>
+</html>
+{% endblock %}

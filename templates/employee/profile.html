@@ -1,0 +1,62 @@
+{% extends 'home.html' %}
+{% block content %}
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+
+    {% comment %} <h3>Edit Employee Details</h3>
+    <div class="container">
+    <form method="post" action="/eprofile/" enctype="multipart/form-data">
+        {% csrf_token %}
+        <input type="text"class="form-control mt-3" name="pfname" value="{{data1.e_fname}}"><br>
+        <input type="text" class="form-control mt-3"name="plname" value="{{data1.e_lname}}"><br>
+        <input type="tel" class="form-control mt-3"name="phnmbr" value="{{data1.e_phone_numbr}}"><br>
+        <input type="text" class="form-control mt-3"name="adds" value="{{data1.e_address}}"><br>
+        <input type="text" class="form-control mt-3"name="post" value="{{data1.e_post}}"><br>
+        <input type="number"class="form-control mt-3" name="age" value="{{data1.e_age}}"><br>
+        <input type="file" class="form-control mt-3"name="photo" accept="image/*"><br>
+        <button type="submit" class="btn btn-primary">Upload</button>
+    </form> {% endcomment %}
+    <br><br>
+
+<div class="container">
+<div class="bg-light p-5">
+    <h3 class="text-uppercase mb-4">Update Employee Details</h3>
+    <form method="post" action="/eprofile/" enctype="multipart/form-data">
+        {% csrf_token %}
+        <div class="row g-3">
+            <div class="col-12 col-sm-6">
+                <input type="text" name="pfname" value="{{data1.e_fname}}" class="form-control bg-white border-0" placeholder="First Name" style="height: 55px;">
+            </div>
+            <div class="col-12 col-sm-6">
+                <input type="text"name="plname" value="{{data1.e_lname}}" class="form-control bg-white border-0" placeholder="Last Name" style="height: 55px;">
+            </div>
+            <div class="col-12 col-sm-6">
+                <input type="tel"name="phnmbr" value="{{data1.e_phone_numbr}}" class="form-control bg-white border-0" placeholder="Phone Number" style="height: 55px;">
+            </div>
+            <div class="col-12 col-sm-6">
+                <input type="text" name="adds" value="{{data1.e_address}}"  class="form-control bg-white border-0" placeholder="Address" style="height: 55px;">
+            </div>
+            <div class="col-12 col-sm-6">
+                <input type="text" name="post" value="{{data1.e_post}}"  class="form-control bg-white border-0" placeholder="Post" style="height: 55px;">
+            </div>
+            <div class="col-12 col-sm-6">
+                <input type="text" name="age" value="{{data1.e_age}}"  class="form-control bg-white border-0" placeholder="Age" style="height: 55px;">
+            </div>
+            <div class="col-12 col-sm-6">
+                <input type="file" name="photo" accept="image/*" class="form-control bg-white border-0" placeholder="Photo" style="height: 55px;">
+            </div>
+            <div class="col-12">
+                <button class="btn btn-primary w-100 py-3" type="submit">Submit</button>
+            </div>
+        </div>
+    </form>
+</div>
+<!-- Comment Form End -->
+</div>
+</div>
+
+</body>
+</html>
+{% endblock %}

@@ -1,0 +1,117 @@
+def tleave(request):
+        if request.method == 'POST':
+            usr = User.objects.get(username=u_name)
+            atten = Employee.objects.get(e_user=usr)
+            lreas = request.POST['reas']
+            lldob = request.POST['ldate']
+            try:
+                emp = Employee.objects.get(e_user=usr)
+            except:
+                sweetify.warning(request,'Employee id not matching')
+                return redirect('Euser')
+            if emp != None:
+                Leave(l_DOB=lldob,l_reason=lreas,l_users=emp).save()
+                emp.l_reason = lreas
+                emp.l_DOB = lldob
+                emp.l_status=None
+                emp.save()
+                atten.save()
+                sweetify.success(request,'Leave request has been recorded. Please wait for confirmation',button='Ok',timer=5000)
+                return redirect('Euser')
+            else:
+                sweetify.success(request,'wrong Employee number')
+                return redirect('Euser')
+        
+def accpt(request,od,oa):
+    apt = Leave.objects.get(id=oa,l_users=od)
+    if apt:
+            if apt.l_status == None:
+                apt.l_status = 'Approved'
+                apt.save()
+                l_users = Employee.objects.get(id=od)
+                l_users.l_status = 'Approved'
+                l_users.save()
+                return redirect('show_leave')
+            elif apt.l_status == 'Approved' :
+                return redirect('show_leave')
+            else:
+                if apt.l_status != 'Approved':
+                    apt.l_status = 'Approved'
+                    apt.save()
+                    l_users = Employee.objects.get(id=od)
+                    l_users.status = 'Approve'
+                    l_users.save()
+                    return redirect('show_leave')
+    else:
+        sweetify.error(request,'error')
+        return redirect('show_leave')
+
+def rejctd(request,oa,od):
+    apt = Leave.objects.get(id=oa,l_users=od)
+    if apt:
+            if apt.l_status == None:
+                apt.l_status = 'Rejected'
+                apt.save()
+                l_users = Employee.objects.get(id=od)
+                l_users.l_status = 'Rejected'
+                l_users.save()
+                return redirect('show_leave')
+            elif apt.l_status == 'Rejected':
+                return redirect('show_leave')
+            else:
+                if apt.l_status!= 'Rejected':
+                    apt.l_status = 'Rejected'
+                    apt.save()
+                    l_users = Employee.objects.get(id=od)
+                    l_users.l_status = 'Rejected'
+                    l_users.save()
+                    return redirect('show_leave')
+    else:
+        sweetify.error(request,'error')
+        return redirect('show_leave')
+
+
+-----------------------------------------------------------------------------------
+
+
+<script>
+        $(document).ready(function() {var addSerialNumber = function () {
+                $('table tr').each(function(index) {
+                $(this).find('td:nth-child(1)').html(index);});};
+        addSerialNumber();
+        });
+    </script> 
+
+
+    <div class="col-lg-12 grid-margin stretch-card">
+        <div class="card">
+          <div class="card-body">
+            <h4 class="card-title">Attendance Register</h4>
+            <p class="card-description"> Add class <code>.table-striped</code>
+            </p>
+            <table class="table table-striped">
+              <thead>
+                <tr>
+                    <th>ID</th>
+                   <th>Full Name</th>
+                    <th>Date</th>
+                     <th>Shift</th>
+                      <th>Action</th>
+                </tr>
+              </thead>
+              <tbody>
+                {% for u in sreg %}
+                <tr>
+                        <td><br>{{ u.id }}</br></td>
+                        <td><br>{{ u.a_users.e_fname }} {{u.a_users.e_lname }}</br></td>
+                        <td><br>{{ u.a_DOB}}</br></td>
+                        <td><br>{{u.a_post}}</br></td>
+                        <td>
+                        <a href="{% url 'delete_register' u.id %}" class="btn btn-danger">Delete</a></td>
+                    {% endfor %}
+                </tr>
+            </tbody>
+        </table>
+      </div>
+    </div>
+  </div>

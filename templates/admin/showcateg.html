@@ -1,0 +1,31 @@
+{% extends 'admin.html' %}
+{% block content %}
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Show category</title>
+</head>
+<body>
+    <br>
+    <div class="container">
+        <table class="table table-dark table-hover text-center  mb-5 w-60" >
+            <tr>
+            <th>Category</th>
+            <th>Price</th>
+            <th>Stock</th>
+            <th>Action</th>
+            </tr>
+            {% for i in catg %}
+            <tr>
+                <td>{{i.product_category}}</td>
+                <td>{{i.product_price}}</td>
+                <td>{{i.product_stock}}</td>
+                <td><a href="{% url 'edit_category' i.id %}">Edit</a></td>
+            </tr>
+            {% endfor %}
+        </table>
+    </div><br><br><br><br>
+</body>
+</html>
+{% endblock %}

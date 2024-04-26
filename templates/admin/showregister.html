@@ -1,0 +1,31 @@
+{% extends 'admin.html' %}
+{% block content %}
+{% load static %}
+    <title>Leave</title>
+</head>
+<body>
+    <div class="container">
+    <h2> Attendance Register</h2>
+    <table class="table table-dark table-hover text-center  mb-5 w-60" >
+        <tr>
+            <th>ID</th>
+            <th>Full Name</th>
+            <th>Date</th>
+            <th>Shift</th>
+            <th>Action</th>
+        </tr>
+        {% for u in sreg %}
+        <tr>
+            <td>{{ u.id }}</td>
+            <td>{{ u.a_attendnce }} </td>
+            <td>{{ u.a_DOB}}</td>
+            <td>{{u.a_post}}</td>
+            <td>
+            <a href="{% url 'delete_register' u.id %}" class="btn btn-danger">Delete</a></td>
+        {% endfor %}
+    </tr>
+    </table>
+</div><br><br><br><br>
+</body>
+</html>
+{% endblock %}

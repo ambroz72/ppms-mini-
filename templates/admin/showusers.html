@@ -1,0 +1,43 @@
+{% extends 'admin.html' %}
+{% block content %}
+{% load static %}
+    <title>All Users</title>
+</head>
+<body>
+    <div class="container">
+    <h2>Employee Details</h2>
+    <table class="table table-dark table-hover text-center  mb-5 w-60" >
+        <tr>
+            <th>ID</th>
+            <th>Full Name</th>
+            <th>Phone Number</th>
+            <th>Email</th>
+            <th>Address</th>
+            <th>Age</th>
+            <th>Post</th>
+            <th>Photo</th>
+            <th>Action</th>
+        </tr>
+        {% for u in user %}
+        <tr>
+            <td>{{ u.id }}</td>
+            <td>{{ u.e_fname }} {{ u.e_lname }}</td>
+            <td>{{ u.e_phone_numbr }}</td>
+            <td>{{ u.e_email }}</td>
+            <td>{{ u.e_address }}</td>
+            <th>{{u.e_age}}</th>
+            <th>{{u.e_post}}</th>
+            <td>
+                {% if u.e_photo %}
+                    <img src="{{ u.e_photo.url }}" height="120px" width="130px"> 
+                {% else %}
+                    <img src="{% static 'img/default.jpeg'  %}" height="120px" width="130px"> 
+                {% endif %}</td>
+                <td><a href="{% url 'deletecust' u.id %}" class="btn btn-danger">Delete</a></td><br><br>
+        {% endfor %}
+    </tr>
+    </table>
+</div><br><br><br><br>
+</body>
+</html>
+{% endblock %}
